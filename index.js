@@ -93,49 +93,48 @@ let finances = [
   ["Feb-2017", -9],
 ];
 
-// The total number of months included in the dataset.
-console.log("Total Months: " + finances.length);
-
-// The net total amount of Profit/Losses over the entire period
-let total = 0;
-
-for (let i = 0; i < finances.length; i++) {
-  const profitLoss = finances[i];
-  console.log(profitLoss[1]);
-  total = total + profitLoss[1];
-}
-console.log("Total: " + "$" + total);
-
-// The average of changes in Profit/Losses over the entire period
-const averageChange = total / finances.length;
-console.log("Average Change: " + "$" + averageChange);
-
-// The greatest increase in profits and the greatest decrease in losses (date and amount) over the entire period
-
 // variables to track the total number of months, net total and total change in profits
 let totalMonths = 0;
 let totalNet = 0;
 let totalChange = 0;
 
 // variables to track greates increase and decrease in profits
+let maxIncreaseProfit = [];
+let maxDecreaseLosses = [];
 
-let maxIncrease = { date: "", amount: 0 };
-let maxDecrease = { date: "", amount: 0 };
+console.log("Financial Analysis");
 
-// Iterate through the dataset to calculate the values
+// The total number of months included in the dataset.
+console.log("Total Months: " + finances.length);
 
-if (totalMonths > 1) {
-  const change = finances[1] - finances[totalMonths - 2][1];
-  totalChange += change;
+let total = 0;
+let maxProfit = 0;
+let maxLoss = 0;
+
+// The average of changes in Profit/Losses over the entire period
+const averageChange = total / finances.length;
+
+// The net total amount of Profit/Losses over the entire period
+for (let i = 0; i < finances.length; i++) {
+  const profitLoss = finances[i];
+  console.log(profitLoss[1]);
+  total = total + profitLoss[1];
+
+  // The greatest increase in profits (date and amount) over the entire period
+  if (profitLoss[1] > maxProfit) {
+    maxIncreaseProfit = profitLoss;
+    maxProfit = profitLoss[1];
+  }
+
+  // The greatest decrease in losses (date and amount) over the entire period
+  if (profitLoss[1] < maxLoss) {
+    maxDecreaseLosses = profitLoss;
+    maxLoss = profitLoss[1];
+  }
 }
 
-// Check if the current profit is greater than the previous profit
-// if (currentProfit > profits[i - 1]) {
-//   // Calculate the increase in profits
-//   let increase = currentProfit - profits[i - 1];
-//   // Update the maximum increase in profit
-//   maxIncrease = Math.max(maxIncrease, increase);
-// }
-
-// // log it to the console
-// console.log("Greatest Increase in Profits " + "$" + maxIncrease);
+// Display all the data
+console.log("Total: " + "$" + total);
+console.log("Average Change: " + "$" + averageChange);
+console.log("Greatest Increase in Profits: " + maxIncreaseProfit);
+console.log("Greatest Decrease in Profits: " + maxDecreaseLosses);
