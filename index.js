@@ -131,6 +131,13 @@ for (let i = 0; i < finances.length; i++) {
 }
 
 // The average of changes in Profit/Losses over the entire period, but tracking first total change from month to month and then finding the average
+
+let changes = [];
+
+for (let i = 0; i < finances.length; i++) {
+  changes = finances[i][1] - finances[i - 1];
+}
+
 const averageChange = total / finances.length;
 
 // Display all the data
