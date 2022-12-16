@@ -87,35 +87,25 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
-// let finances = [
-//   ["Dec-2016", 15],
-//   ["Jan-2017", 2],
-//   ["Feb-2017", -9],
-// ];
-
-// variables to track the total number of months, net total and total change in profits
-let totalMonths = 0;
-let totalNet = 0;
-let totalChange = 0;
-
-// variables to track greates increase and decrease in profits
-let maxIncreaseProfit = [];
-let maxDecreaseLosses = [];
+for (let i = 0; i < finances.length; i++) {
+  const [date, amount] = finances[i];
+}
 
 console.log("Financial Analysis");
-
 // The total number of months included in the dataset.
-console.log("Total Months: " + finances.length);
+let totalMonths = finances.length;
+console.log(`Total months: ${totalMonths}`);
 
-let total = 0;
 let maxProfit = 0;
 let maxLoss = 0;
+let maxIncreaseProfit = 0;
+let maxDecreaseLosses = 0;
 
 // The net total amount of Profit/Losses over the entire period
+let netTotal = 0;
 for (let i = 0; i < finances.length; i++) {
   const profitLoss = finances[i];
-  // console.log(profitLoss[1]);
-  total = total + profitLoss[1];
+  netTotal = netTotal + profitLoss[1];
 
   // The greatest increase in profits (date and amount) over the entire period
   if (profitLoss[1] > maxProfit) {
@@ -129,31 +119,15 @@ for (let i = 0; i < finances.length; i++) {
     maxLoss = profitLoss[1];
   }
 }
+console.log(`Total: $${netTotal}`);
+console.log(`Greatest Increase in Profits ${maxIncreaseProfit}`);
+console.log(`Greatest Decrease in Profits: ${[maxDecreaseLosses]}`);
 
-// The average of changes in Profit/Losses over the entire period, but tracking first total change from month to month and then finding the average
+// The average of the changes in Profit/Losses over the entire period - total change from month to month and the the average of that
 
-let changes = [];
-
+let totalChange = 0;
 for (let i = 0; i < finances.length; i++) {
-  changes = finances[i][1] - finances[i - 1];
+  totalChange = finances[i][1] - finances[i - 1][1];
 }
-
-const averageChange = total / finances.length;
-
-// Display all the data
-console.log("Total: " + "$" + total);
-console.log("Average Change: " + "$" + averageChange);
-console.log(
-  "Greatest Increase in Profits: " +
-    maxIncreaseProfit[0] +
-    " ($" +
-    maxIncreaseProfit[1] +
-    ")"
-);
-console.log(
-  "Greatest Decrease in Profits: " +
-    maxDecreaseLosses[0] +
-    " ($" +
-    maxDecreaseLosses[1] +
-    ")"
-);
+let averageChange = totalChange / totalMonths;
+console.log(`Average Change: $${averageChange}`);
