@@ -1,4 +1,4 @@
-var finances = [
+let finances = [
   ["Jan-2010", 867884],
   ["Feb-2010", 984655],
   ["Mar-2010", 322013],
@@ -89,43 +89,59 @@ var finances = [
 
 console.log("Financial Analysis");
 
-// The total number of months included in the dataset.
+// The total number of months included in the dataset array.length
+// store it in a variable
 let totalMonths = finances.length;
 console.log(`Total months: ${totalMonths}`);
 
-// variable declarations for greatest increase in profits and greatest decrese in losses
-let maxProfit = 0;
-let maxLoss = 0;
-
-// The net total amount of Profit/Losses over the entire period - THIS WORKS
+// The net total amount of Profit/Losses over the entire period
+// variable to store rolling total
 let netTotal = 0;
+
+// for loop iterating over the array
 for (let i = 0; i < finances.length; i++) {
   const profitLoss = finances[i];
   netTotal += profitLoss[1];
-
-  // The greatest increase in profits (date and amount) over the entire period
-  if (profitLoss[1] > maxProfit) {
-    maxIncreaseProfit = profitLoss;
-    maxProfit = profitLoss[1];
-  }
-
-  // The greatest decrease in losses (date and amount) over the entire period
-  if (profitLoss[1] < maxLoss) {
-    maxDecreaseLosses = profitLoss;
-    maxLoss = profitLoss[1];
-  }
 }
 console.log(`Total: $${netTotal}`);
 
 // The average of the changes in Profit/Losses over the entire period - total change from month to month and then the average of that - THIS  WORKS
 let totalChange = 0;
 
+// for loop starting at i=1
 for (let i = 1; i < finances.length; i++) {
   totalChange += finances[i][1] - finances[i - 1][1];
 }
 
 let averageChange = totalChange / (finances.length - 1);
-console.log(`Average Change: $${averageChange}`);
+console.log(`Average Change: $${averageChange.toFixed(2)}`);
 
-console.log(`Greatest Increase in Profits ${maxIncreaseProfit}`);
-console.log(`Greatest Decrease in Losses: ${[maxDecreaseLosses]}`);
+// The greatest increase in profits(date and amount) over the entire period.
+// The greatest decrease in losses(date and amount) over the entire period.
+
+// an empty array to store month-to-month changes
+let changeArr = [];
+
+// variables to store greatest + and greatest -
+let greatestProfit = 0;
+let greatestLoss = 0;
+
+for (let i = 1; i < finances.length; i++) {
+  // Subtracting the data at position [1] of the previous element from the data at position [1] of the current element, store it into variable
+
+  let monthToMonth = finances[i][1] - finances[i - 1][1];
+  // console.log("monthToMonth", monthToMonth, finances[i][0]); // logged this into the console to see if it works
+
+  // Create an array to push the month-to-month changes in
+  changeArr.push(monthToMonth);
+
+  // if greatest + is less than a month-to-month change, reassign it to monthToMonth
+  if (greatestProfit < monthToMonth) {
+    greatestProfit = monthToMonth;
+    // if greatest - is greater than a month-to-month change, reassign it to monthToMonth
+  } else if (greatestLoss > monthToMonth) {
+    greatestLoss = monthToMonth;
+  }
+}
+console.log(`Greatest Increase in Profits: ($${greatestProfit})`);
+console.log(`Greatest Decrease in Profits: ($${greatestLoss})`);
