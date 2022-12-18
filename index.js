@@ -105,19 +105,12 @@ for (let i = 0; i < finances.length; i++) {
 }
 console.log(`Total: $${netTotal}`);
 
-// The average of the changes in Profit/Losses over the entire period - total change from month to month and then the average of that - THIS  WORKS
+// The average of the changes in Profit/Losses over the entire period - total change from month to month and then the average of that
+// The greatest increase in profits(date and amount) over the entire period
+// The greatest decrease in losses(date and amount) over the entire period
+
+// a variable to store average change
 let totalChange = 0;
-
-// for loop starting at i=1
-for (let i = 1; i < finances.length; i++) {
-  totalChange += finances[i][1] - finances[i - 1][1];
-}
-
-let averageChange = totalChange / (finances.length - 1);
-console.log(`Average Change: $${averageChange.toFixed(2)}`);
-
-// The greatest increase in profits(date and amount) over the entire period.
-// The greatest decrease in losses(date and amount) over the entire period.
 
 // an empty array to store month-to-month changes
 let changeArr = [];
@@ -127,6 +120,8 @@ let greatestProfit = 0;
 let greatestLoss = 0;
 
 for (let i = 1; i < finances.length; i++) {
+  totalChange += finances[i][1] - finances[i - 1][1];
+
   // Subtracting the data at position [1] of the previous element from the data at position [1] of the current element, store it into variable
 
   let monthToMonth = finances[i][1] - finances[i - 1][1];
@@ -143,5 +138,8 @@ for (let i = 1; i < finances.length; i++) {
     greatestLoss = monthToMonth;
   }
 }
+
+let averageChange = totalChange / (finances.length - 1);
+console.log(`Average Change: $${averageChange.toFixed(2)}`);
 console.log(`Greatest Increase in Profits: ($${greatestProfit})`);
 console.log(`Greatest Decrease in Profits: ($${greatestLoss})`);
