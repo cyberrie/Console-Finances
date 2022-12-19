@@ -115,31 +115,43 @@ let totalChange = 0;
 // an empty array to store month-to-month changes
 let changeArr = [];
 
-// variables to store greatest + and greatest -
+// variables to store greatest + and greatest - for [1]
 let greatestProfit = 0;
 let greatestLoss = 0;
 
+// variables to store greatest + and greatest - for [0]
+let greatestProfitMonth;
+let greatestLossMonth;
+
 for (let i = 1; i < finances.length; i++) {
+  // average change starting at Feb-2010 (i=1) month so technically can include 85 months in total
   totalChange += finances[i][1] - finances[i - 1][1];
 
   // Subtracting the data at position [1] of the previous element from the data at position [1] of the current element, store it into variable
-
-  let monthToMonth = finances[i][1] - finances[i - 1][1];
-  // console.log("monthToMonth", monthToMonth, finances[i][0]); // logged this into the console to see if it works
+  let greatestChange = finances[i][1] - finances[i - 1][1];
+  // console.log("greatestChange", greatestChange, finances[i][0]); // logged this into the console to see if it works
 
   // Create an array to push the month-to-month changes in
-  changeArr.push(monthToMonth);
+  changeArr.push(greatestChange);
 
-  // if greatest + is less than a month-to-month change, reassign it to monthToMonth
-  if (greatestProfit < monthToMonth) {
-    greatestProfit = monthToMonth;
-    // if greatest - is greater than a month-to-month change, reassign it to monthToMonth
-  } else if (greatestLoss > monthToMonth) {
-    greatestLoss = monthToMonth;
+  // if greatest + is less than a greatestChange, reassign it to greatestChange
+  if (greatestProfit < greatestChange) {
+    greatestProfit = greatestChange;
+    greatestProfitMonth = finances[i][0];
+
+    // if greatest - is greater than a greatestChange, reassign it to greatestChange
+  } else if (greatestLoss > greatestChange) {
+    greatestLoss = greatestChange;
+    greatestLossMonth = finances[i][0];
   }
 }
 
 let averageChange = totalChange / (finances.length - 1);
 console.log(`Average Change: $${averageChange.toFixed(2)}`);
-console.log(`Greatest Increase in Profits: ($${greatestProfit})`);
-console.log(`Greatest Decrease in Profits: ($${greatestLoss})`);
+
+console.log(
+  `Greatest Increase in Profits: ${greatestProfitMonth} ($${greatestProfit})`
+);
+console.log(
+  `Greatest Decrease in Profits: ${greatestLossMonth} ($${greatestLoss})`
+);
