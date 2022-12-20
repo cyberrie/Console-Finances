@@ -115,14 +115,15 @@ let totalChange = 0;
 // an empty array to store month-to-month changes
 let changeArr = [];
 
-// variables to store greatest + and greatest - for [1]
-let greatestProfit = 0;
-let greatestLoss = 0;
-
-// variables to store greatest + and greatest - for [0]
+// variables to store greatest + and greatest - for finances[0]
 let greatestProfitMonth;
 let greatestLossMonth;
 
+// variables to store greatest + and greatest - for finances[1]
+let greatestProfit = 0;
+let greatestLoss = 0;
+
+// for loop for average change, max profit and max loss
 for (let i = 1; i < finances.length; i++) {
   // average change starting at Feb-2010 (i=1) month so technically can include 85 months in total
   totalChange += finances[i][1] - finances[i - 1][1];
