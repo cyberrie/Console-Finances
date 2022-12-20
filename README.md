@@ -16,7 +16,7 @@ It calculates each of the following:
 
 - The greatest decrease in losses (date and amount) over the entire period
 
-## Expected Console Output & Screenshot
+## Expected Console Output
 
 The final code prints the analysis to browser console, as below:
 
@@ -29,13 +29,15 @@ Greatest Increase in Profits: Feb-2012 ($1926159)
 Greatest Decrease in Profits: Sep-2013 ($-2196167)
 ```
 
-## Screenshot
+## Screenshot of the Console Output
 
 ![console-finances](./Console-Finances.png)
 
 ## Links
 
-Click on this link to access the Live Server: [Browser Console](https://cyberrie.github.io/Bootstrap-Portfolio/)
+1. Click on this link to access the Live Server: [Console Finances](https://cyberrie.github.io/Console-Finances/)
+
+2. Press Command+Option+J (Mac) or Control+Shift+J (Windows, Linux, ChromeOS) to open the Console
 
 ## My Process
 
@@ -58,7 +60,7 @@ Click on this link to access the Live Server: [Browser Console](https://cyberrie
 
 - [JavaScript Arrays and array Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
-- [JavaScript Loops and Iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration) - Documentation on Loops & Iteration in JS
+- [JavaScript Loops and Iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
 ## Author
 
