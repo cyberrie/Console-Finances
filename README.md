@@ -16,7 +16,7 @@ It calculates each of the following:
 
 - The greatest decrease in losses (date and amount) over the entire period
 
-## Console Output
+## Expected Console Output & Screenshot
 
 The final code prints the analysis to browser console, as below:
 
@@ -28,6 +28,10 @@ Average  Change: $-2315.12
 Greatest Increase in Profits: Feb-2012 ($1926159)
 Greatest Decrease in Profits: Sep-2013 ($-2196167)
 ```
+
+## Screenshot
+
+![console-finances](./Console-Finances.png)
 
 ## Links
 
