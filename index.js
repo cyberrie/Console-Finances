@@ -92,7 +92,7 @@ console.log("Financial Analysis");
 // The total number of months included in the dataset array.length
 // store it in a variable
 let totalMonths = finances.length;
-console.log(`Total months: ${totalMonths}`);
+console.log(`Total Months: ${totalMonths}`);
 
 // The net total amount of Profit/Losses over the entire period
 // variable to store rolling total
