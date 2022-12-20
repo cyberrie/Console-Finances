@@ -60,6 +60,8 @@ Greatest Decrease in Profits: Sep-2013 ($-2196167)
 
 - [JavaScript Arrays and array Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
+- [Number.prototype.toFixed()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
+
 - [JavaScript Loops and Iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
 ## Author
